@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test Search Bar</title>
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script src="search.js"></script>
+</head>
+
+<body>
+  <form>
+    <select id="selection">
+      <option value="Title">Title</option>
+      <option value="Actor 1">Actor</option>
+      <option value="Director">Director</option>
+      <option value="Locations">Location</option>
+    </select> 
+    <input type="text" size="30" onkeyup="showResult(this.value, document.getElementById('selection').value)">
+    <div id="livesearch" size="30"></div>
+  </form>
+</body>
+
+</html>
