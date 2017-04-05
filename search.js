@@ -1,9 +1,6 @@
 var urlCSV = "https://data.sfgov.org/api/views/yitu-d5am/rows.csv?accessType=DOWNLOAD"
 var urlJSON = "https://data.sfgov.org/api/views/yitu-d5am/rows.json?accessType=DOWNLOAD"
 
-// loader settings
-var target = document.getElementById('#chart-id');
-
 var _data;
 
 // callback function wrapped for loader in 'init' function
@@ -22,21 +19,18 @@ function chart(str, key) {
   console.log("OK");
   let result = [];
   for (var i = 0; i < _data.length; i++) {
-    if (_data[i][key].toLowerCase().includes(strtoLowerCase()) && !alreadyIn(result, key, _data[i][key])) {
+    if (_data[i][key].toLowerCase().includes(str.toLowerCase()) && !alreadyIn(result, key, _data[i][key])) {
       result.push(_data[i]);
-      // document.getElementById("main").innerHTML += "<p>" + _data[i][key] + "</p>";
-      document.getElementById("result").innerHTML += "<option value =\"" + _data[i][key] + "\">";
+      document.getElementById("autocomplete").innerHTML += "<option value=\"" + _data[i][key] + "\" onclick=\"myFunction()\">";
       if (result.length === 5) {
-        break;        
+        break;
       }
     }
   }
-  console.log(result);
   return result;
 }
 
-function alreadyIn(result, key, test)
-{
+function alreadyIn(result, key, test) {
   for (var i = 0; i < result.length; i++)
   {
     if (result[i][key] === test)
@@ -46,7 +40,7 @@ function alreadyIn(result, key, test)
 }
 
 function showResult(str, key) {
-  document.getElementById("result").innerHTML = "";
+  document.getElementById("autocomplete").innerHTML = "";
   if (str.length == 0) {
     document.getElementById("livesearch").innerHTML = "";
     document.getElementById("livesearch").style.border = "0px";
@@ -54,6 +48,29 @@ function showResult(str, key) {
     document.getElementById("livesearch").innerHTML = key + ": " + str;
     document.getElementById("livesearch").style.border = "1px solid #A5ACB2";
     chart(str, key);
+  }
+}
+
+function onInput() {
+  var val = document.getElementById("input").value;
+  var opts = document.getElementById('autocomplete').childNodes;
+  var key = document.getElementById('selection').value;
+  for (var i = 0; i < opts.length; i++) {
+    if (opts[i].value === val) {
+      // An item was selected from the list!
+      // yourCallbackHere()
+
+      let result = [];
+      for (var i = 0; i < _data.length; i++) {
+        if (_data[i][key].toLowerCase().includes(val.toLowerCase())) {
+          result.push(_data[i]);
+          // document.getElementById("main").innerHTML += "<p>" + _data[i].Title + "</p>";
+        }
+      }
+      console.log(result);
+
+      break;
+    }
   }
 }
 
