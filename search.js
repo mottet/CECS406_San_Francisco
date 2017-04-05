@@ -8,24 +8,41 @@ var _data;
 
 // callback function wrapped for loader in 'init' function
 function init() {
-        // load json data and trigger callback
-        d3.csv(urlCSV, function(data) {
-            // instantiate chart within callback
-            // chart(data);
-            _data = data;
-        });
+  // load json data and trigger callback
+  d3.csv(urlCSV, function(data) {
+    // instantiate chart within callback
+    // chart(data);
+    _data = data;
+  });
 }
 
 init();
 
 function chart(str, key) {
   console.log("OK");
+  let result = [];
   for (var i = 0; i < _data.length; i++) {
-    if (_data[i][key].toLowerCase().includes(str.toLowerCase())) {
-      // document.getElementById("").innerHTML += "<p>" + _data[i][key] + "</p>";
+    if (_data[i][key].toLowerCase().includes(strtoLowerCase()) && !alreadyIn(result, key, _data[i][key])) {
+      result.push(_data[i]);
+      // document.getElementById("main").innerHTML += "<p>" + _data[i][key] + "</p>";
       document.getElementById("result").innerHTML += "<option value =\"" + _data[i][key] + "\">";
+      if (result.length === 5) {
+        break;        
+      }
     }
   }
+  console.log(result);
+  return result;
+}
+
+function alreadyIn(result, key, test)
+{
+  for (var i = 0; i < result.length; i++)
+  {
+    if (result[i][key] === test)
+    return true;
+  }
+  return false;
 }
 
 function showResult(str, key) {
