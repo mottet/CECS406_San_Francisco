@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
   <title>Test Search Bar</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+  
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://d3js.org/d3.v4.js"></script>
   <script src="search.js"></script>
+
+  
 </head>
 
 <body>
@@ -14,12 +24,18 @@
       <option value="Director">Director</option>
       <option value="Locations">Location</option>
     </select>
-    <input type="text" size="30" onkeyup="showResult(this.value, document.getElementById('selection').value)" list="result">
+    <input id="input" type="text" size="30" onkeyup="showResult(this.value, document.getElementById('selection').value)" list="result">
     <datalist id="result">
     </datalist>
-    <div id="livesearch" size="30"></div>
   </form>
 
+  <div id="slider">
+    <label for="year">Year range:</label>
+    <input type="text" id="year" readonly style="border:0; color:#f6931f; font-weight:bold;">
+  
+    <div id="slider-range"></div>
+  </div>
+  
   <section id="chart"></section>
 
   <main id="main"></main>
