@@ -21,14 +21,15 @@ init();
 function chart(str, key) {
   console.log("OK");
   for (var i = 0; i < _data.length; i++) {
-    if (_data[i][key].includes(str)) {
-      document.getElementById("main").innerHTML += "<p>" + _data[i][key] + "</p>";
+    if (_data[i][key].toLowerCase().includes(str.toLowerCase())) {
+      // document.getElementById("").innerHTML += "<p>" + _data[i][key] + "</p>";
+      document.getElementById("result").innerHTML += "<option value =\"" + _data[i][key] + "\">";
     }
   }
 }
 
 function showResult(str, key) {
-  document.getElementById("main").innerHTML = "";
+  document.getElementById("result").innerHTML = "";
   if (str.length == 0) {
     document.getElementById("livesearch").innerHTML = "";
     document.getElementById("livesearch").style.border = "0px";

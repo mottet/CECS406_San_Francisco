@@ -14,7 +14,9 @@
       <option value="Director">Director</option>
       <option value="Locations">Location</option>
     </select>
-    <input type="text" size="30" onkeyup="showResult(this.value, document.getElementById('selection').value)">
+    <input type="text" size="30" onkeyup="showResult(this.value, document.getElementById('selection').value)" list="result">
+    <datalist id="result">
+    </datalist>
     <div id="livesearch" size="30"></div>
   </form>
 
