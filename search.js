@@ -3,12 +3,12 @@ var urlJSON = "https://data.sfgov.org/api/views/yitu-d5am/rows.json?accessType=D
 
 var _data;
 
+var filter_result = [];
+
 // callback function wrapped for loader in 'init' function
 function init() {
-  // load json data and trigger callback
+  // load csv data and trigger callback
   d3.csv(urlCSV, function(data) {
-    // instantiate chart within callback
-    // chart(data);
     _data = data;
   });
 }
@@ -25,7 +25,7 @@ function getDataByYear(from, to)
 	}
     }
     console.log(result);
-    return result;
+    filter_result = result;
 }
 
 $ (function () {
@@ -89,28 +89,16 @@ function onInput() {
   var key = document.getElementById('selection').value;
   for (var i = 0; i < opts.length; i++) {
     if (opts[i].value === val) {
-      // An item was selected from the list!
-      // yourCallbackHere()
 
       let result = [];
       for (var i = 0; i < _data.length; i++) {
         if (_data[i][key].toLowerCase().includes(val.toLowerCase())) {
           result.push(_data[i]);
-          // document.getElementById("main").innerHTML += "<p>" + _data[i].Title + "</p>";
         }
       }
-      console.log(result);
-
+	console.log(result);
+	filter_result = result;
       break;
     }
   }
 }
-
-// var data;
-//
-// d3.csv("data.csv", function (error, _data)
-// {
-//   console.log(error);
-//   data = _data;
-//   console.log(_data);
-// });
