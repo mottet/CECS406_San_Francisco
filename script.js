@@ -125,7 +125,7 @@ function loadResultsOnMap() {
 // callback function wrapped for loader in 'init' function
 function init() {
   // load json data and trigger callback
-  d3.csv(filename, function(error, data) {
+  d3.csv(urlCSV, function(error, data) {
     // instantiate chart within callback
     // chart(data);
     _data = data;
