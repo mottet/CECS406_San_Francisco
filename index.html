@@ -2,41 +2,105 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>Test Search Bar</title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <title>CECS 406 Group Project</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
-
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script src="https://d3js.org/d3.v4.js"></script>
-  <script src="search.js"></script>
-
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
-
 <body>
-  <form>
+  <!-- Form controls -->
+  <section id="controls">
     <select id="selection">
-      <option value="Title">Title</option>
+      <option value="Title">Movie Title</option>
       <option value="Actor 1">Actor</option>
       <option value="Director">Director</option>
       <option value="Locations">Location</option>
     </select>
-    <input type="text" oninput="onInput()" id="input" size="30" onkeyup="showResult(this.value, document.getElementById('selection').value)" list="autocomplete">
+    <input type="text" oninput="onInput()" id="pac-input" class="controls" placeholder="Search" size="30" onkeyup="showAutocompleteResult(this.value, document.getElementById('selection').value)" list="autocomplete">
     <datalist id="autocomplete"></datalist>
-  </form>
+    <div id="slider">
+      <label for="year">Year range:</label>
+      <input type="text" id="year" readonly>
+      <div id="slider-range"></div>
+    </div>
+    <span id="nb-results"></span>
+  </section>
+  <!-- <div id="livesearch" size="30"></div> -->
 
-  <div id="slider">
-    <label for="year">Year range:</label>
-    <input type="text" id="year" readonly style="border:0; color:#f6931f; font-weight:bold;">
-    <div id="slider-range"></div>
-  </div>
+  <!-- Maps -->
+  <!-- <input id="pac-input" class="controls" type="text" placeholder="Search Box"> -->
+  <div id="map"></div>
 
-  <section id="chart"></section>
+  <!-- Script -->
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="script.js"></script>
+  <!-- <script src="maps-script.js"></script> -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDa9kieTQYO6Zkn2ol-DWEMvrXPWqok670&callback=initMap"></script>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDa9kieTQYO6Zkn2ol-DWEMvrXPWqok670&libraries=places&callback=initAutocomplete"
+  async defer></script> -->
+</body>
+</html>
 
-  <main id="main"></main>
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+<title>Simple markers</title>
+<style>
+/* Always set the map height explicitly to define the size of the div
+* element that contains the map. */
+#map {
+height: 100%;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+height: 100%;
+margin: 0;
+padding: 0;
+}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+
+function initMap() {
+var myLatLng = {lat: -25.363, lng: 131.044};
+
+var map = new google.maps.Map(document.getElementById('map'), {
+zoom: 4,
+center: myLatLng
+});
+
+var marker = new google.maps.Marker({
+position: myLatLng,
+map: map,
+title: 'Hello World!'
+});
+}
+</script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDa9kieTQYO6Zkn2ol-DWEMvrXPWqok670&callback=initMap">
+</script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<title>D3</title>
+<meta charset='utf-8'>
+<script src="script/spin.min.js"></script>
+</head>
+<body>
+
+<section id="chart"></section>
+
+<main id="main"></main>
 
 </body>
-
-</html>
+</html> -->
