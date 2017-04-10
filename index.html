@@ -12,10 +12,10 @@
   <!-- Form controls -->
   <section id="controls">
     <select id="selection">
+      <option value="Locations">Location</option>
       <option value="Title">Movie Title</option>
       <option value="Actor 1">Actor</option>
       <option value="Director">Director</option>
-      <option value="Locations">Location</option>
     </select>
     <input type="text" oninput="onInput()" id="pac-input" class="controls" placeholder="Search" size="30" onkeyup="showAutocompleteResult(this.value, document.getElementById('selection').value)" list="autocomplete">
     <datalist id="autocomplete"></datalist>
@@ -24,7 +24,9 @@
       <input type="text" id="year" readonly>
       <div id="slider-range"></div>
     </div>
-    <span id="nb-results"></span>
+    <span id="nb-results"></span><br />
+    <label for="checkbox">Show markers: </label>
+    <input type="checkbox" id="checkbox" value="checkbox" onchange="toggleCheckbox(this)">
   </section>
   <!-- <div id="livesearch" size="30"></div> -->
 
@@ -43,64 +45,3 @@
   async defer></script> -->
 </body>
 </html>
-
-<!-- <!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-<meta charset="utf-8">
-<title>Simple markers</title>
-<style>
-/* Always set the map height explicitly to define the size of the div
-* element that contains the map. */
-#map {
-height: 100%;
-}
-/* Optional: Makes the sample page fill the window. */
-html, body {
-height: 100%;
-margin: 0;
-padding: 0;
-}
-</style>
-</head>
-<body>
-<div id="map"></div>
-<script>
-
-function initMap() {
-var myLatLng = {lat: -25.363, lng: 131.044};
-
-var map = new google.maps.Map(document.getElementById('map'), {
-zoom: 4,
-center: myLatLng
-});
-
-var marker = new google.maps.Marker({
-position: myLatLng,
-map: map,
-title: 'Hello World!'
-});
-}
-</script>
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDa9kieTQYO6Zkn2ol-DWEMvrXPWqok670&callback=initMap">
-</script>
-</body>
-</html> -->
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-<title>D3</title>
-<meta charset='utf-8'>
-<script src="script/spin.min.js"></script>
-</head>
-<body>
-
-<section id="chart"></section>
-
-<main id="main"></main>
-
-</body>
-</html> -->

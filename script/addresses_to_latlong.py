@@ -3,7 +3,7 @@ import requests
 import json
 import time
 
-API_KEY = "&key=AIzaSyCoEMAhhOW9ypAi70OGHdFUtqsr9ZO-1YI"
+API_KEY = "&key=" + "AIzaSyC9_Ygf9lPeB7gTTpSDZVzcJaHugxaQD6A"
 BASE_URL = "https://maps.googleapis.com/maps/api/geocode/json?address="
 
 locations = []
@@ -25,26 +25,21 @@ def request_URL(address):
 
 def main():
 	setupFile()
-	with open('lat_longs.txt', 'w') as outfile:
+	with open('lat_longs.csv', 'w', newline='') as csvfile:
+		writer = csv.writer(csvfile, delimiter=',')
 		for x in locations:
 			address = x[2]
 			url = request_URL(address)
 			response = requests.get(url)
 			dataAPI = response.json()
 			if dataAPI['results']:
-				sf = False
-				# for item in dataAPI['results'][0]['address_components']:
-				# 	if 'SF' in item.values():
-				# 		print("Found SF!")
-
-				# 	print(type(item))
-				# 	print(item)
 				data = dataAPI['results'][0]['geometry']['location']
-				json.dump(data, outfile)
-				outfile.write('\n')
+				lat = data['lat']
+				lng = data['lng']
+				writer.writerow(x + [lat] + [lng])
 
 			print(address)
-			time.sleep(.1)
+			time.sleep(.05)
 
 	# for row in locations:
 
