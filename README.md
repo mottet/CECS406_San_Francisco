@@ -2,13 +2,13 @@
 
 ### Running
 
-To run the project, open a Terminal and do:
+To run the project, open a Terminal and type:
 
 `python -m SimpleHTTPServer 8888`
 
 Then, open `http://localhost:8888/` in Google Chrome (doesn't work with other browsers).
 
-### Screnshots
+### Screenshots
 
 ![](https://i.imgur.com/ggoPKlB.jpg)
 
